@@ -29,8 +29,8 @@ void CStage::Render()
 			else if (i == STAGE_HEIGHT)
 				cout << "■";
 			else if (j == STAGE_WIDTH + 1)
-				cout << "■";
-			else cout << "  "; // 두 칸으로 해야 함
+				cout << "■"; // 2Byte
+			else cout << "  "; // 2Byte짜리라서 공백 두 칸으로 해야 함
 		}
 		cout << endl;
 	}

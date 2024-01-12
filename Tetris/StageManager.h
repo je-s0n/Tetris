@@ -23,7 +23,7 @@ public:
 
 // 현재 스테이지 정보 필요
 private:
-	class CStage* m_pCurStage;
+	class CStage* m_pCurStage; // include 안되어 있으니 전방선언함
 public:
 	bool Init();
 	void Run();
