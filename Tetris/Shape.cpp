@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "Core.h"
 
 CShape::CShape() {
 
@@ -25,8 +26,11 @@ bool CShape::Init()
 // 운영체제한테 핸들을 이용하여 요청해야 함 -> 가로 가운데 맨 끝 4-5번으로 잡고 내리자 [0][4]
 void CShape::Render()
 {
+
 	for (int i = 0; i < 4; ++i)
 	{
+		// 콘솔창에 출력할 좌표를 설정한 후 출력
+		CCore::GetInst()->SetConsolePos(m_tPos.x, m_tPos.y-(3-i));
 		for (int j = 0; j < 4; ++j)
 		{
 			if (m_cShape[i][j] == '0')
