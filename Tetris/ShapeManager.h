@@ -23,7 +23,6 @@ public:
 	}
 
 private:
-	list<class CShape*> m_ShapeList; // 바닥에 쌓인 도형 표현
 	class CShape* m_pCurShape; // 현재 나와있는 도형 표현
 	class CShape* m_pNextShape; // 다음 나올 도형 표현
 

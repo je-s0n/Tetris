@@ -1,7 +1,8 @@
 #include "Stage.h"
 #include "Core.h"
+#include "Shape.h"
 
-CStage::CStage() : m_iSpeed(10)
+CStage::CStage() : m_iSpeed(2)
 {
 }
 
@@ -10,9 +11,39 @@ CStage::~CStage()
 {
 }
 
+void CStage::AddBlock(class CShape* pShape, const POSITION& tPos)
+{
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			// 블록일 경우
+			if (pShape->GetBlock(j, i) == '0')
+			{
+				m_Stage[tPos.y - (3-i)][tPos.x + j] = '0';
+			}
+		}
+	}
+};
+
+bool CStage::CheckBlock(int x, int y)
+{
+	if (y >= STAGE_HEIGHT) // 바닥에 닿았을 때 true 리턴
+		return true;
+	else if (x < 0 || x >= STAGE_WIDTH)
+		return true;
+	return m_Stage[y][x] == '0';
+}
+
 bool CStage::Init()
 {
-	memset(m_Stage, 0, STAGE_WIDTH * STAGE_HEIGHT);
+	for (int i = 0; i < STAGE_HEIGHT; ++i)
+	{
+		for (int j = 0; j < STAGE_WIDTH; ++j)
+		{
+			m_Stage[i][j] = '1';
+		}
+	}
 	return true;
 }
 
@@ -31,7 +62,11 @@ void CStage::Render()
 				cout << "■";
 			else if (j == STAGE_WIDTH + 1)
 				cout << "■"; // 2Byte
-			else cout << "  "; // 2Byte짜리라서 공백 두 칸으로 해야 함
+			else {
+				if(m_Stage[i][j-1] == '1')
+					cout << "  "; // 2Byte짜리라서 공백 두 칸으로 해야 함
+				else cout << "■";
+			}
 		}
 		cout << endl;
 	}

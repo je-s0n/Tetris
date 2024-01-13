@@ -1,5 +1,7 @@
 #include "Shape.h"
 #include "Core.h"
+#include "Stage.h"
+#include "StageManager.h"
 
 CShape::CShape() {
 
@@ -26,7 +28,6 @@ bool CShape::Init()
 // 운영체제한테 핸들을 이용하여 요청해야 함 -> 가로 가운데 맨 끝 4-5번으로 잡고 내리자 [0][4]
 void CShape::Render()
 {
-
 	for (int i = 0; i < 4; ++i)
 	{
 		int iYIndex = m_tPos.y - (3 - i);
@@ -50,26 +51,6 @@ void CShape::Render()
 	}
 }
 
-// 이 함수는 true : 바닥에 닿음, false : 바닥에 닿지 않음
-boolean CShape::MoveDown() {
-	if (m_tPos.y == STAGE_HEIGHT - 1) // 맨 아래에서 움직일 수 없다
-		return true;
-	++m_tPos.y;
-	return false;
-}
-
-void CShape::MoveLeft() {
-	if (m_tPos.x == 0)
-		return;
-	--m_tPos.x;
-}
-
-void CShape::MoveRight() {
-	if (m_tPos.x + m_iWidthCount == STAGE_WIDTH) // 도형의 맨 왼쪽 아래를 기준으로 잡았기 때문에 디테일한 처리 필요하여 차지하고 있는 가로 값 저장 후 비교
-		return;
-	++m_tPos.x;
-}
-
 void CShape::RenderNext()
 {
 
@@ -91,4 +72,64 @@ void CShape::RenderNext()
 
 		cout << endl;
 	}
+}
+
+boolean CShape::MoveDown() {
+	CStage* pStage = CStageManager::GetInst()->GetCurrentStage();
+
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			if(m_cShape[i][j] == '0') {
+				if (pStage->CheckBlock(m_tPos.x + j, m_tPos.y - (2 - i)))
+				{
+					return true;
+				}
+			}
+		}
+	}
+	++m_tPos.y;
+	return false;
+}
+
+void CShape::MoveLeft() {
+	if (m_tPos.x == 0)
+		return;
+	CStage* pStage = CStageManager::GetInst()->GetCurrentStage();
+
+	for (int i = 0; i < 4; ++i) 
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			if (m_cShape[i][j] == '0') {
+				if (pStage->CheckBlock(m_tPos.x + j - 1, m_tPos.y - (3 - i)))
+				{
+					return;
+				}
+			}
+		}
+	}
+	--m_tPos.x;
+}
+
+void CShape::MoveRight() {
+	if (m_tPos.x + m_iWidthCount == STAGE_WIDTH) // 도형의 맨 왼쪽 아래를 기준으로 잡았기 때문에 디테일한 처리 필요하여 차지하고 있는 가로 값 저장 후 비교
+		return;
+
+	CStage* pStage = CStageManager::GetInst()->GetCurrentStage();
+
+	for (int i = 0; i < 4; ++i)
+	{
+		for (int j = 0; j < 4; ++j)
+		{
+			if (m_cShape[i][j] == '0') {
+				if (pStage->CheckBlock(m_tPos.x + j + 1, m_tPos.y - (3 - i)))
+				{
+					return;
+				}
+			}
+		}
+	}
+	++m_tPos.x;
 }
