@@ -1,4 +1,5 @@
 #include "Core.h"
+
 int main()
 {
 	if (!CCore::GetInst()->Init()) // 초기화 실패

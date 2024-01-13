@@ -29,10 +29,17 @@ void CShape::Render()
 
 	for (int i = 0; i < 4; ++i)
 	{
+		int iYIndex = m_tPos.y - (3 - i);
+		if (iYIndex < 0)
+			continue;
 		// 콘솔창에 출력할 좌표를 설정한 후 출력
-		CCore::GetInst()->SetConsolePos(m_tPos.x, m_tPos.y-(3-i));
+		CCore::GetInst()->SetConsolePos(m_tPos.x, iYIndex);
 		for (int j = 0; j < 4; ++j)
 		{
+			// 맨 오른쪽으로 도형이 갈 경우 "  "가 출력 되지 않도록 처리
+			if (m_tPos.x + j >= STAGE_WIDTH)
+				continue;
+
 			if (m_cShape[i][j] == '0')
 				cout << "■";
 			else
@@ -43,10 +50,12 @@ void CShape::Render()
 	}
 }
 
-void CShape::MoveDown() {
+// 이 함수는 true : 바닥에 닿음, false : 바닥에 닿지 않음
+boolean CShape::MoveDown() {
 	if (m_tPos.y == STAGE_HEIGHT - 1) // 맨 아래에서 움직일 수 없다
-		return;
+		return true;
 	++m_tPos.y;
+	return false;
 }
 
 void CShape::MoveLeft() {
@@ -59,4 +68,27 @@ void CShape::MoveRight() {
 	if (m_tPos.x + m_iWidthCount == STAGE_WIDTH) // 도형의 맨 왼쪽 아래를 기준으로 잡았기 때문에 디테일한 처리 필요하여 차지하고 있는 가로 값 저장 후 비교
 		return;
 	++m_tPos.x;
+}
+
+void CShape::RenderNext()
+{
+
+	for (int i = 0; i < 4; ++i)
+	{
+		int iYIndex = m_tPos.y - (3 - i);
+		if (iYIndex < 0)
+			continue;
+		// 콘솔창에 출력할 좌표를 설정한 후 출력
+		CCore::GetInst()->SetConsolePos(m_tPos.x, iYIndex);
+		for (int j = 0; j < 4; ++j)
+		{
+
+			if (m_cShape[i][j] == '0')
+				cout << "■";
+			else
+				cout << "  ";
+		}
+
+		cout << endl;
+	}
 }

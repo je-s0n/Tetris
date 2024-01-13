@@ -1,6 +1,7 @@
 #include "Stage.h"
+#include "Core.h"
 
-CStage::CStage()
+CStage::CStage() : m_iSpeed(10)
 {
 }
 
@@ -33,5 +34,16 @@ void CStage::Render()
 			else cout << "  "; // 2Byte짜리라서 공백 두 칸으로 해야 함
 		}
 		cout << endl;
+	}
+
+	// 다음 도형을 보여주기 위한 공간 설정
+	for (int i = 0; i < 7; ++i) {
+		CCore::GetInst()->SetConsolePos(17, i);
+		cout << "■";
+	}
+
+	for (int i = 0; i < 6; ++i) {
+		CCore::GetInst()->SetConsolePos(11 + i, 6);
+		cout << "■";
 	}
 }
