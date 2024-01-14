@@ -41,16 +41,18 @@ void CShapeLine::Rotation()
 	switch (m_iDir)
 	{
 	case RD_UP:
-		m_cShape[0][3] = '0'; // 0 : 차있는것
-		m_cShape[1][3] = '0';
-		m_cShape[2][3] = '0';
-		m_cShape[3][3] = '0';
+		m_cShape[0][0] = '0'; // 0 : 차있는것
+		m_cShape[1][0] = '0';
+		m_cShape[2][0] = '0';
+		m_cShape[3][0] = '0';
+		m_iWidthCount = 1;
 		break;
 	case RD_DOWN:
 		m_cShape[3][0] = '0'; // 0 : 차있는것
 		m_cShape[3][1] = '0';
 		m_cShape[3][2] = '0';
 		m_cShape[3][3] = '0';
+		m_iWidthCount = 4;
 		break;
 	}
 }
