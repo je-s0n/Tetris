@@ -18,6 +18,8 @@ protected:
 	POSITION m_tPivot;
 	// 피봇을 잡아놓고 현재 모양이 무엇이냐에 따라 모양 바뀔 때마다 가로 몇칸인지 저장해야 함 
 	int m_iWidthCount;
+	// 기본 방향
+	int m_iDir;
 	
 public:
 	char GetBlock(int x, int y) const
@@ -47,6 +49,7 @@ public:
 	}
 public:
 	virtual bool Init();
+	virtual void Rotation();
 
 public:
 	void Render();

@@ -12,3 +12,13 @@ enum SHAPE_TYPE
 	ST_T,
 	ST_END
 };
+
+// Rotataion Dir -> 시계방향으로 돌아가도록 설정
+enum ROTATION_DIR
+{
+	RD_UP,
+	RD_RIGHT,
+	RD_DOWN,
+	RD_LEFT,
+	RD_END
+};

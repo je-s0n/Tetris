@@ -8,5 +8,6 @@ public:
 
 public:
 	virtual bool Init();
+	virtual void Rotation();
 };
 

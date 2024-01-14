@@ -4,7 +4,7 @@
 #include "StageManager.h"
 
 CShape::CShape() {
-
+	m_iDir = RD_UP;
 	for (int i = 0; i < 4; ++i) {
 		for (int j = 0; j < 4; ++j) {
 			m_cShape[i][j] = '1'; // 1 : 빈공간
@@ -23,6 +23,9 @@ bool CShape::Init()
 	return true;
 }
 
+void CShape::Rotation()
+{
+}
 
 // 윈도우 콘솔도 핸들을 가지고 있음 -> 그래서 이 콘솔에 핸들을 가지고 와서 이 콘솔창을 컨트롤 하기
 // 운영체제한테 핸들을 이용하여 요청해야 함 -> 가로 가운데 맨 끝 4-5번으로 잡고 내리자 [0][4]

@@ -63,6 +63,11 @@ void CShapeManager::Update()
 	{
 		m_pCurShape->MoveRight();
 	}
+
+	if (GetAsyncKeyState('W') & 0x8000)
+	{
+		m_pCurShape->Rotation();
+	}
 }
 
 void CShapeManager::Render()
