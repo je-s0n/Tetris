@@ -27,9 +27,13 @@ public:
 private:
 	// 콘솔창에서 핸들 변수 잡아줌
 	HANDLE m_hConsole;
+	bool m_bLoop;
 public:
 	bool Init(); // 초기화 함수
 	void Run(); // 게임 동작 run 함수
 	void SetConsolePos(int x, int y); // 윈도우 마우스 위치 잡는 세팅 함수
+	void End() {
+		m_bLoop = false;
+	}
 };
 

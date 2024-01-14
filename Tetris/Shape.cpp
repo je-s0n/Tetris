@@ -87,6 +87,21 @@ boolean CShape::MoveDown() {
 			if(m_cShape[i][j] == '0') {
 				if (pStage->CheckBlock(m_tPos.x + j, m_tPos.y - (2 - i)))
 				{
+					// 바닥에 닿은 후 현재 도형의 블럭인 부분이 하나라도 좌표가 0보다 작다면 게임 종료함
+					for (int k = 0; k < 4; ++k)
+					{
+						for (int l = 0; l < 4; ++l)
+						{
+							if (m_cShape[k][l] == '0')
+							{
+								if (m_tPos.y - (3 - k) < 0) 
+								{
+									CCore::GetInst()->End();
+									break;
+								}
+							}
+						}
+					}
 					return true;
 				}
 			}

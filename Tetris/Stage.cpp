@@ -21,6 +21,26 @@ void CStage::AddBlock(class CShape* pShape, const POSITION& tPos)
 			if (pShape->GetBlock(j, i) == '0')
 			{
 				m_Stage[tPos.y - (3-i)][tPos.x + j] = '0';
+
+				bool bLine = true;
+				// 현재 라인을 체크하여 가득 차있으면 한줄 제거한 후 그 외 차있는 모든 줄을 한 칸씩 내려준다.
+				for (int k = 0; k < STAGE_WIDTH; ++k)
+				{
+					if (m_Stage[tPos.y - (3 - i)][k] != '0') {
+						bLine = false;
+						break;
+					}
+				}
+
+				if (bLine)
+				{
+					for (int k = tPos.y-(3-i); k > 0; --k)
+					{
+						for (int l = 0; l < STAGE_WIDTH; ++l) {
+							m_Stage[k][l] = m_Stage[k - 1][l];
+						}
+					}
+				}
 			}
 		}
 	}

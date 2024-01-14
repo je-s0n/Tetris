@@ -7,7 +7,7 @@
 
 CCore* CCore::m_pInst = NULL;
 
-CCore::CCore()
+CCore::CCore() : m_bLoop(true)
 {
 	srand((unsigned int)time(0));
 }
@@ -34,7 +34,7 @@ bool CCore::Init()
 
 void CCore::Run()
 {
-	while (true)
+	while (m_bLoop)
 	{
 		system("cls"); // 아래 1초 멈췄다가 지워지도록 하는 함수
 		CShapeManager::GetInst()->Update();
