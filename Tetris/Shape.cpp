@@ -41,10 +41,12 @@ void CShape::Render()
 			if (m_tPos.x + j >= STAGE_WIDTH)
 				continue;
 
-			if (m_cShape[i][j] == '0')
+			if (m_cShape[i][j] == '0') 
+			{
+				// 콘솔창에 출력할 좌표를 설정한 후 출력
+				CCore::GetInst()->SetConsolePos(m_tPos.x + j, iYIndex);
 				cout << "■";
-			else
-				cout << "  ";
+			}
 		}
 
 		cout << endl;
@@ -59,15 +61,13 @@ void CShape::RenderNext()
 		int iYIndex = m_tPos.y - (3 - i);
 		if (iYIndex < 0)
 			continue;
-		// 콘솔창에 출력할 좌표를 설정한 후 출력
-		CCore::GetInst()->SetConsolePos(m_tPos.x, iYIndex);
 		for (int j = 0; j < 4; ++j)
 		{
-
-			if (m_cShape[i][j] == '0')
+			if (m_cShape[i][j] == '0') {
+				// 출력할 때마다 좌표 설정 후 출력
+				CCore::GetInst()->SetConsolePos(m_tPos.x + j, iYIndex);
 				cout << "■";
-			else
-				cout << "  ";
+			}
 		}
 
 		cout << endl;

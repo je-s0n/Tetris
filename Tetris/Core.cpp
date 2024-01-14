@@ -40,7 +40,8 @@ void CCore::Run()
 		CShapeManager::GetInst()->Update();
 		CStageManager::GetInst()->Run();
 		CShapeManager::GetInst()->Render();
-		Sleep(10);
+		
+		Sleep(100);
 	}
 }
 
