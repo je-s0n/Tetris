@@ -4,9 +4,41 @@
 <br/>
 
 ## 설계
-<br/>
-
-## 동작 방법
+```
+Tetris
+ ├ Flags.h
+ ├ Macro.h
+ ├ main.cpp
+ ├ value.h
+ └ Core
+     ├ Core.cpp
+     └ Core.h
+ └ Stage
+     ├ Stage.cpp
+     ├ Stage.h
+     ├ StageManager.cpp
+     └ StageManager.h
+ └ Shape
+     ├ Shape.cpp
+     ├ Shape.h
+     ├ ShapeManager.cpp
+     ├ ShapeManager.h
+     ├ Rectangle.cpp
+     ├ Rectangle.h
+     ├ ShapeGun.cpp
+     ├ ShapeGun.h
+     ├ ShapeRGun.cpp
+     ├ ShapeRGun.h
+     ├ ShapeLine.cpp
+     ├ ShapeLine.h
+     ├ ShapeS.cpp
+     ├ ShapeS.h
+     ├ ShapeT.cpp
+     ├ ShapeT.h
+     ├ ShapeZ.cpp
+     └ Shapez.h
+```
+## 동작 결과
 <br/>
 
 ## 회고
