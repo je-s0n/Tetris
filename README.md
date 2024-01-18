@@ -43,6 +43,7 @@ Tetris
 
 ## 동작 결과
 ![image](https://github.com/je-s0n/tetris-game/assets/152856285/7c8a7e1b-5692-4c6c-b097-0903cf21b096)
+<br/><br/>
 ![image](https://github.com/je-s0n/tetris-game/assets/152856285/cdce2126-a9e1-4366-bac3-27ebbcefce39)
 
 
