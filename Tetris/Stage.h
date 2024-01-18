@@ -14,6 +14,9 @@ private:
 	int m_iSpeed; // 스피드 값
 
 public:
+	long score = 0; // 점수 값
+
+public:
 	int GetSpeed() const
 	{
 		return m_iSpeed;

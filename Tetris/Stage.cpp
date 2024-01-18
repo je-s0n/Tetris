@@ -34,6 +34,7 @@ void CStage::AddBlock(class CShape* pShape, const POSITION& tPos)
 
 				if (bLine)
 				{
+					score += 10; // 10점씩 점수를 더해준다.
 					for (int k = tPos.y-(3-i); k > 0; --k)
 					{
 						for (int l = 0; l < STAGE_WIDTH; ++l) {
@@ -101,4 +102,7 @@ void CStage::Render()
 		CCore::GetInst()->SetConsolePos(11 + i, 6);
 		cout << "■";
 	}
+
+	CCore::GetInst()->SetConsolePos(11, 7);
+	cout << "score = " << score << endl;
 }
