@@ -6,23 +6,23 @@
 ## 설계
 ```
 Tetris
- ├ Flags.h
- ├ Macro.h
- ├ main.cpp
- ├ value.h
+ ├ Flags.h // 테트리스 도형 종류와 도형 방향의 집합 정의된 헤더파일
+ ├ Macro.h // 메모리 해제 함수가 정의된 헤더파일
+ ├ main.cpp // main cpp파일
+ ├ value.h // 스테이지 가로, 세로 길이 정의 및 스테이지 내 위치 +, -, = 하는 함수 정의
  └ Core
-     ├ Core.cpp
+     ├ Core.cpp // 테트리스 게임 동작을 위해 전체적으로 관리하는 cpp파일
      └ Core.h
  └ Stage
-     ├ Stage.cpp
+     ├ Stage.cpp // 테트리스 도형을 스테이지에 추가/확인/초기화, 스테이지 Render하는 cpp파일 
      ├ Stage.h
-     ├ StageManager.cpp
+     ├ StageManager.cpp // 스테이지 관리 cpp파일
      └ StageManager.h
  └ Shape
-     ├ Shape.cpp
+     ├ Shape.cpp // 테트리스 도형 cpp파일
      ├ Shape.h
-     ├ ShapeManager.cpp
-     ├ ShapeManager.h
+     ├ ShapeManager.cpp // 테트리스 도형 관리 cpp파일
+     ├ ShapeManager.h 
      ├ Rectangle.cpp
      ├ Rectangle.h
      ├ ShapeGun.cpp
